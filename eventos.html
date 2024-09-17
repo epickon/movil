@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - EpicKon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #435df5;
+            --secondary-color: rgba(67, 93, 245, 0);
+            --background-color: #f3ddf4;
+            --text-color: #444444;
+            --shadow-color: rgba(35, 20, 204, 0.99);
+        }
+
+        html, body {
+            height: 100%; /* Asegura que el html y body ocupen toda la altura de la ventana */
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('fondo.jpg'); /* Cambia esto por la ruta de tu imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1; /* Ocupa todo el espacio disponible */
+            padding: 80px 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(33, 49, 240, 0.02); /* Fondo blanco semi-transparente */
+            border-radius: 15px; /* Opcional: bordes redondeados para el contenedor principal */
+        }
+
+        h1 {
+            font-family: 'Bangers', cursive;
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .event-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            transform: rotate(-2deg);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px) rotate(0deg);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-title {
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .event-date, .event-location {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-description {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .event-button:hover {
+            background-color: #2f44c2;
+            transform: scale(1.05) rotate(-5deg);
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto; /* Asegura que el footer se mantenga en la parte inferior */
+        }
+
+        .footer p {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #2f44c2;
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        .no-events {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .no-events img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        @media (max-width: 768px) {
+            .events-container {
+                grid-template-columns: 1fr;
+            }
+            .main-content {
+                padding-top: 60px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-container"></div>
+
+    <div class="main-content">
+        <h1>Próximos Eventos</h1>
+        <div id="no-events" class="no-events">
+            <img src="evento.jpg" alt="No hay eventos">
+        </div>
+        <div id="events-container" class="events-container">
+            <!-- Los eventos se cargarán aquí dinámicamente -->
+        </div>
+    </div>
+
+    <footer class="footer">
+       
+        <div class="social-links">
+            <a id="facebook-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a id="instagram-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a id="tiktok-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+                    </div>
+         <p>&copy; 2024 EpicKon. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        const API_KEY = 'AIzaSyC24ezqwMmny3UNBvvd0cQbQ-nWvggqoXw';
+        const CALENDAR_ID = '65bac6ad6467485f15f77ff8fccc0f70ed4415e7d83404bf7e7aac3bb64cda91@group.calendar.google.com';
+        const DEFAULT_IMAGE_URL = 'https://iili.io/dr2SiwG.jpg';
+
+        function initClient() {
+            gapi.client.init({
+                'apiKey': API_KEY,
+                'discoveryDocs': ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
+            }).then(function () {
+                loadEvents();
+            });
+        }
+
+        function getEventImage(event) {
+            if (event.attachments && event.attachments.length > 0) {
+                for (let attachment of event.attachments) {
+                    if (attachment.mimeType.startsWith('image/')) {
+                        return `https://www.googleapis.com/drive/v3/files/${attachment.fileId}?alt=media&key=${API_KEY}`;
+                    }
+                }
+            }
+
+            const imgRegex = /<img.*?src="(.*?)".*?>/;
+            const match = event.description ? event.description.match(imgRegex) : null;
+            if (match && match[1]) {
+                return match[1];
+            }
+
+            return DEFAULT_IMAGE_URL;
+        }
+
+        function loadEvents() {
+            gapi.client.calendar.events.list({
+                'calendarId': CALENDAR_ID,
+                'timeMin': (new Date()).toISOString(),
+                'showDeleted': false,
+                'singleEvents': true,
+                'maxResults': 10,
+                'orderBy': 'startTime'
+            }).then(function(response) {
+                const events = response.result.items;
+                const eventsContainer = document.getElementById('events-container');
+                const noEventsContainer = document.getElementById('no-events');
+
+                if (events.length === 0) {
+                    eventsContainer.style.display = 'none';
+                    noEventsContainer.style.display = 'block';
+                } else {
+                    eventsContainer.innerHTML = '';
+                    noEventsContainer.style.display = 'none';
+                    events.forEach(event => {
+                        const eventDate = new Date(event.start.dateTime || event.start.date);
+                        const eventCard = document.createElement('div');
+                        eventCard.className = 'event-card';
+                        
+                        const imageUrl = getEventImage(event);
+                        
+                        eventCard.innerHTML = `
+                            <img src="${imageUrl}" alt="Imagen del evento ${event.summary}" class="event-image">
+                            <div class="event-content">
+                                <h2 class="event-title">${event.summary}</h2>
+                                <p class="event-date">${eventDate.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                <p class="event-description">${event.description || 'No hay descripción disponible.'}</p>
+                                <a href="${event.htmlLink}" class="event-button" target="_blank">Más detalles</a>
+                            </div>
+                        `;
+                        eventsContainer.appendChild(eventCard);
+                    });
+                }
+            });
+        }
+
+        gapi.load('client', initClient);
+
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+            });
+
+        fetch('social_links.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('facebook-link').href = data.facebook;
+                document.getElementById('instagram-link').href = data.instagram;
+                document.getElementById('tiktok-link').href = data.tiktok;
+            })
+            .catch(error => console.error('Error cargando los enlaces:', error));
+    </script>
+</body>
+</html>

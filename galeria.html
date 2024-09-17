@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - EpicKon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Bangers&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #435df5;
+            --secondary-color: rgba(67, 93, 245, 0);
+            --background-color: #f3ddf4;
+            --text-color: #444444;
+            --shadow-color: rgba(35, 20, 204, 0.99);
+        }
+
+                    body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('fondo.jpg'); /* Cambia esto por la ruta de tu imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+        }
+
+        .events-container {
+            padding: 2rem;
+            /* Asegúrate de agregar otros estilos para el contenedor de eventos aquí */
+        }
+
+        .footer {
+            background-color: rgba(243, 221, 244, 0.8);
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        
+        
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .main-content {
+            padding-top: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 20px;
+        }
+
+        h1 {
+            font-family: 'Bangers', cursive;
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .carousel {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            box-shadow: 0px 8px 16px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+            padding: 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background-color: rgba(67, 93, 245, 0.7);
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-buttons button:focus {
+            outline: none;
+        }
+
+        .carousel-buttons button:hover {
+            background-color: rgba(67, 93, 245, 0.9);
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .kawaii-container {
+            position: relative;
+        }
+
+        .kawaii-cloud {
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-size: 40px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .kawaii-star {
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            font-size: 30px;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #2f44c2;
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        .footer p {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .carousel {
+                max-width: 90%;
+            }
+            .main-content {
+                padding-top: 60px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .carousel-buttons button {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-container"></div>
+
+    <div class="main-content">
+        <div class="kawaii-container">
+            <h1>Evento Casa de La Cultura</h1>
+            <div class="kawaii-cloud" aria-hidden="true">☁️</div>
+            <div class="kawaii-star" aria-hidden="true">⭐</div>
+        </div>
+        <div class="carousel">
+            <div class="carousel-track">
+                <!-- Las imágenes se insertarán dinámicamente aquí -->
+            </div>
+            <div class="carousel-buttons">
+                <button id="prevBtn" aria-label="Imagen anterior">❮</button>
+                <button id="nextBtn" aria-label="Imagen siguiente">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <div class="social-links">
+        <a id="facebook-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a id="instagram-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a id="tiktok-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; 2024 EpicKon. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const imageLinks = [
+      "galeria.png",
+          "https://iili.io/drdN3Ku.jpg",
+"https://iili.io/drdwpN2.jpg",
+"https://iili.io/drdwytS.jpg",
+"https://iili.io/drdNHo7.jpg",
+"https://iili.io/drdNBAQ.jpg",
+"https://iili.io/drdNKSj.jpg",
+"https://iili.io/drdNFcb.jpg",
+"https://iili.io/drdNIiF.jpg",
+"https://iili.io/drdNuKg.jpg",
+"https://iili.io/drdNAla.jpg",
+"https://iili.io/drdNYRR.jpg",
+"https://iili.io/drdNcDN.jpg",
+"https://iili.io/drdN0xI.jpg",
+"https://iili.io/drdN1Vt.jpg",
+"https://iili.io/drdNEiX.jpg",
+"https://iili.io/drdNVls.jpg",
+"https://iili.io/drdNWUG.jpg",
+"https://iili.io/drdNhJf.jpg",
+"https://iili.io/drdNjR4.jpg",
+"https://iili.io/drdNkW7.jpg",
+"https://iili.io/drdNSfe.jpg",
+"https://iili.io/drdNgUb.jpg",
+"https://iili.io/drdN4Jj.jpg",
+"https://iili.io/drdN65x.jpg",
+"https://iili.io/drdNPOQ.jpg",
+"https://iili.io/drdNLzB.jpg",
+"https://iili.io/drdNQWP.jpg",
+"https://iili.io/drdNZs1.jpg",
+"https://iili.io/drdNDqF.jpg",
+"https://iili.io/drdNydJ.jpg",
+"https://iili.io/drdOHeR.jpg",
+"https://iili.io/drdO2zN.jpg",
+"https://iili.io/drdO3XI.jpg",
+"https://iili.io/drdOfqX.jpg",
+"https://iili.io/drdOBgs.jpg",
+"https://iili.io/drdOo7f.jpg",
+"https://iili.io/drdOxe4.jpg",
+"https://iili.io/drdOuXS.jpg",
+"https://iili.io/drdO5B9.jpg",
+"https://iili.io/drdOcdb.jpg",
+"https://iili.io/drdOl7j.jpg",
+"https://iili.io/drdO0kx.jpg",
+"https://iili.io/drdOMhB.jpg",
+"https://iili.io/drdOXB1.jpg",
+"https://iili.io/drdOVLP.jpg",
+"https://iili.io/drdOhEF.jpg",
+"https://iili.io/drdON2a.jpg",
+"https://iili.io/drdOOYJ.jpg",
+"https://iili.io/drdOekv.jpg",
+"https://iili.io/drdOShN.jpg",
+"https://iili.io/drdO4EX.jpg",
+"https://iili.io/drdOsYG.jpg",
+"https://iili.io/drdOLvf.jpg",
+"https://iili.io/drdOQp4.jpg",
+"https://iili.io/drdOpC7.jpg",
+"https://iili.io/drde3yx.jpg",
+"https://iili.io/drde2vj.jpg",
+"https://iili.io/drdeKTQ.jpg",
+"https://iili.io/drdefjV.jpg",
+"https://iili.io/drdenG1.jpg",
+"https://iili.io/drdeIaa.jpg",
+"https://iili.io/drdeT8J.jpg",
+"https://iili.io/drdeRuR.jpg",
+"https://iili.io/drde5jp.jpg",
+"https://iili.io/drdel6X.jpg",
+"https://iili.io/drde1Fn.jpg",
+"https://iili.io/drdeG8G.jpg",
+"https://iili.io/drdeV9f.jpg",
+"https://iili.io/drdeXwl.jpg",
+"https://iili.io/drdewnS.jpg",
+"https://iili.io/drdeOP9.jpg",
+"https://iili.io/drdeNM7.jpg",
+"https://iili.io/drdevcu.jpg",
+"https://iili.io/drderwQ.jpg",
+"https://iili.io/drdeU9j.jpg",
+"https://iili.io/drde88b.jpg",
+"https://iili.io/drdePoB.jpg",
+"https://iili.io/drdeiMP.jpg",
+"https://iili.io/drdesP1.jpg",
+"https://iili.io/drdeZcg.jpg",
+"https://iili.io/drdemAv.jpg",
+"https://iili.io/drdepNR.jpg",
+"https://iili.io/drdeytp.jpg",
+"https://iili.io/drdkJVI.jpg",
+"https://iili.io/drdk3KX.jpg",
+"https://iili.io/drdkBRf.jpg",
+"https://iili.io/drdkCN4.jpg",
+"https://iili.io/drdknDl.jpg",
+"https://iili.io/drdkIi7.jpg",
+"https://iili.io/drdkAle.jpg",
+"https://iili.io/drdkYRj.jpg",
+"https://iili.io/drdk7Hb.jpg",
+"https://iili.io/drdk0xV.jpg",
+"https://iili.io/drdkcDQ.jpg",
+"https://iili.io/drdkEiP.jpg",
+"https://iili.io/drdkMf1.jpg",
+"https://iili.io/drdkj5J.jpg",
+"https://iili.io/drdkNbR.jpg",
+"https://iili.io/drdkkWN.jpg",
+"https://iili.io/drdkexp.jpg",
+"https://iili.io/drdkSft.jpg",
+"https://iili.io/drdk4Js.jpg",
+"https://iili.io/drdkib4.jpg",
+"https://iili.io/drdk65G.jpg",
+"https://iili.io/drdkQX2.jpg",
+"https://iili.io/drdkDq7.jpg",
+"https://iili.io/drdkb19.jpg",
+"https://iili.io/drdkydu.jpg",
+"https://iili.io/drdv2zQ.jpg",
+"https://iili.io/drdv3XV.jpg",
+"https://iili.io/drdvfqP.jpg",
+"https://iili.io/drdvFLB.jpg",
+"https://iili.io/drdvo7a.jpg",
+"https://iili.io/drdvzmv.jpg",
+"https://iili.io/drdvndg.jpg",
+"https://iili.io/drdvxkJ.jpg",
+"https://iili.io/drdvTIR.jpg",
+"https://iili.io/drdvALN.jpg",
+"https://iili.io/drdv71t.jpg",
+"https://iili.io/drdvc2n.jpg",
+"https://iili.io/drdvl7s.jpg",
+"https://iili.io/drdv1pf.jpg",
+"https://iili.io/drdvGI4.jpg",
+"https://iili.io/drdvVQ2.jpg",
+"https://iili.io/drdvXBS.jpg",
+"https://iili.io/drdvN2e.jpg",
+"https://iili.io/drdvhE7.jpg",
+"https://iili.io/drdvekb.jpg",
+"https://iili.io/drdvShQ.jpg",
+"https://iili.io/drdvUQV.jpg",
+"https://iili.io/drdvrCB.jpg",
+"https://iili.io/drdvi3F.jpg",
+"https://iili.io/drdvLva.jpg",
+"https://iili.io/drdvQyJ.jpg",
+"https://iili.io/drdvbQp.jpg",
+"https://iili.io/drd894t.jpg",
+"https://iili.io/drd82vs.jpg",
+"https://iili.io/drd8dan.jpg",
+"https://iili.io/drd83yG.jpg",
+"https://iili.io/drd8Kuf.jpg",
+"https://iili.io/drd8qZl.jpg",
+"https://iili.io/drd8fj4.jpg",
+"https://iili.io/drd8nGS.jpg",
+"https://iili.io/drd8Iae.jpg",
+"https://iili.io/drd8o67.jpg",
+"https://iili.io/drd8zF9.jpg",
+"https://iili.io/drd8T8u.jpg",
+"https://iili.io/drd8Ruj.jpg",
+"https://iili.io/drd85wx.jpg",
+"https://iili.io/drd87ZQ.jpg",
+"https://iili.io/drd8anV.jpg",
+"https://iili.io/drd8cMB.jpg",
+"https://iili.io/drd8l6P.jpg",
+"https://iili.io/drd81F1.jpg",
+"https://iili.io/drd8EcF.jpg",
+"https://iili.io/drd8Xwv.jpg",
+"https://iili.io/drd8htR.jpg",
+"https://iili.io/drd8NMN.jpg",
+"https://iili.io/drd8wnp.jpg",
+"https://iili.io/drd88Sn.jpg",
+"https://iili.io/drd8vcX.jpg",
+"https://iili.io/drd8rNf.jpg",
+"https://iili.io/drd8U9s.jpg",
+"https://iili.io/drd84t4.jpg",
+"https://iili.io/drd8iV2.jpg",
+"https://iili.io/drd8Pol.jpg",
+"https://iili.io/drd8QK7.jpg",
+"https://iili.io/drd8sPS.jpg",
+"https://iili.io/drd8mAb.jpg",
+"https://iili.io/drd8pNj.jpg",
+"https://iili.io/drd8yDx.jpg",
+"https://iili.io/drdSJVV.jpg",
+"https://iili.io/drdSdiB.jpg",
+"https://iili.io/drdSKUF.jpg",
+"https://iili.io/drdSCOJ.jpg",
+"https://iili.io/drdSxxR.jpg",
+"https://iili.io/drdSnDv.jpg",
+"https://iili.io/drdSzVp.jpg",
+"https://iili.io/drdSIiN.jpg",
+"https://iili.io/drdSRUX.jpg",
+"https://iili.io/drdSAlt.jpg",
+"https://iili.io/drdS7Jn.jpg",
+"https://iili.io/drdS0x4.jpg",
+"https://iili.io/drdScbf.jpg",
+"https://iili.io/drdSEs2.jpg",
+"https://iili.io/drdS1Wl.jpg",
+"https://iili.io/drdShJe.jpg",
+"https://iili.io/drdSWg9.jpg",
+"https://iili.io/drdSj5u.jpg",
+"https://iili.io/drdSwOb.jpg",
+"https://iili.io/drdSkWQ.jpg",
+"https://iili.io/drdSSqB.jpg",
+"https://iili.io/drdSvsV.jpg",
+"https://iili.io/drdSU0P.jpg",
+"https://iili.io/drdSPea.jpg",
+"https://iili.io/drdSimJ.jpg",
+"https://iili.io/drdSQXR.jpg",
+"https://iili.io/drdSLzv.jpg",
+"https://iili.io/drdSmgt.jpg",
+"https://iili.io/drdSydX.jpg",
+"https://iili.io/drdU97n.jpg",
+"https://iili.io/drdUHes.jpg",
+"https://iili.io/drdUFLl.jpg",
+"https://iili.io/drdUq1S.jpg",
+"https://iili.io/drdUfB2.jpg",
+"https://iili.io/drdU3X4.jpg",
+"https://iili.io/drdUn29.jpg",
+"https://iili.io/drdUxku.jpg",
+"https://iili.io/drdUzmb.jpg",
+"https://iili.io/drdUuhx.jpg",
+"https://iili.io/drdU5BV.jpg",
+"https://iili.io/drdUc21.jpg",
+"https://iili.io/drdUlYF.jpg",
+"https://iili.io/drdUYrP.jpg",
+"https://iili.io/drdU0kg.jpg",
+"https://iili.io/drdUevn.jpg",
+"https://iili.io/drdUkps.jpg",
+"https://iili.io/drdUMhv.jpg",
+"https://iili.io/drdU8TG.jpg",
+"https://iili.io/drdU64S.jpg",
+"https://iili.io/drdUrCl.jpg",
+"https://iili.io/drdUsa9.jpg",
+"https://iili.io/drdUi37.jpg",
+"https://iili.io/drdUQyu.jpg",
+"https://iili.io/drdUtTb.jpg",
+"https://iili.io/drdUDjj.jpg",
+"https://iili.io/drdUpCQ.jpg",
+"https://iili.io/drdg96B.jpg",
+"https://iili.io/drdUyGV.jpg",
+"https://iili.io/drdgJ3P.jpg",
+"https://iili.io/drdg28F.jpg",
+"https://iili.io/drdgKua.jpg",
+"https://iili.io/drdgnGp.jpg",
+"https://iili.io/drdgfwJ.jpg",
+"https://iili.io/drdgCnR.jpg",
+"https://iili.io/drdgo6N.jpg",
+"https://iili.io/drdgIat.jpg",
+"https://iili.io/drdgRus.jpg",
+"https://iili.io/drdg5wG.jpg",
+"https://iili.io/drdg7tf.jpg",
+"https://iili.io/drdgan4.jpg",
+"https://iili.io/drdgcMl.jpg",
+"https://iili.io/drdglP2.jpg",
+"https://iili.io/drdg1FS.jpg",
+"https://iili.io/drdgGS9.jpg",
+"https://iili.io/drdgWAu.jpg",
+"https://iili.io/drdghtj.jpg",
+"https://iili.io/drdgXwb.jpg",
+"https://iili.io/drdgNMQ.jpg",
+"https://iili.io/drdg8S1.jpg",
+"https://iili.io/drdgUHF.jpg",
+"https://iili.io/drdgrNa.jpg",
+"https://iili.io/drdgPov.jpg",
+"https://iili.io/drdgZlI.jpg",
+"https://iili.io/drdgbHX.jpg",
+"https://iili.io/drdgtSt.jpg",
+"https://iili.io/drdgmRn.jpg",
+"https://iili.io/drdrFlS.jpg",
+"https://iili.io/drdrKU7.jpg",
+"https://iili.io/drdrqJ9.jpg",
+"https://iili.io/drdrBRe.jpg",
+"https://iili.io/drdrCOu.jpg",
+"https://iili.io/drdrxxj.jpg",
+"https://iili.io/drdrufV.jpg",
+"https://iili.io/drdrA0B.jpg",
+"https://iili.io/drdr7J1.jpg",
+"https://iili.io/drdrRUP.jpg",
+"https://iili.io/drdrY5F.jpg",
+"https://iili.io/drdraOg.jpg",
+"https://iili.io/drdr0zJ.jpg",
+"https://iili.io/drdr1Wv.jpg",
+"https://iili.io/drdrEsR.jpg",
+"https://iili.io/drdrMfp.jpg",
+"https://iili.io/drdrwen.jpg",
+"https://iili.io/drdrhJt.jpg",
+"https://iili.io/drdrezG.jpg",
+"https://iili.io/drdrkXf.jpg",
+"https://iili.io/drdr4d7.jpg",
+"https://iili.io/drdrvs4.jpg",
+"https://iili.io/drdrSql.jpg",
+"https://iili.io/drdrZLx.jpg",
+"https://iili.io/drdrmrB.jpg",
+"https://iili.io/drd4971.jpg",
+"https://iili.io/drd4HkF.jpg",
+"https://iili.io/drd4Jmg.jpg",
+"https://iili.io/drd42Ia.jpg",
+"https://iili.io/drd43hJ.jpg",
+"https://iili.io/drd4FLv.jpg",
+"https://iili.io/drd4q1p.jpg",
+"https://iili.io/drd4o7t.jpg",
+"https://iili.io/drd4TIs.jpg",
+"https://iili.io/drd4uhG.jpg",
+"https://iili.io/drd45B4.jpg",
+"https://iili.io/drd47El.jpg",
+"https://iili.io/drd4c2S.jpg",
+"https://iili.io/drd4Y42.jpg",
+"https://iili.io/drd41pe.jpg",
+"https://iili.io/drd4Mhb.jpg",
+"https://iili.io/drd4VQj.jpg",
+"https://iili.io/drd4XCx.jpg",
+"https://iili.io/drd4N3B.jpg",
+"https://iili.io/drd4kyF.jpg",
+"https://iili.io/drd4UZJ.jpg",
+"https://iili.io/drd48Tg.jpg",
+"https://iili.io/drd44GR.jpg",
+"https://iili.io/drd4saI.jpg",
+"https://iili.io/drd4Lvt.jpg",
+"https://iili.io/drd4QyX.jpg",
+"https://iili.io/drd4Djs.jpg",
+"https://iili.io/drd4bZG.jpg",
+"https://iili.io/drd696l.jpg",
+"https://iili.io/drd6daS.jpg",
+"https://iili.io/drd6JF2.jpg",
+"https://iili.io/drd6Kue.jpg",
+"https://iili.io/drd6qZb.jpg",
+"https://iili.io/drd6Cnj.jpg",
+"https://iili.io/drd6o6Q.jpg",
+"https://iili.io/drd6T8P.jpg",
+"https://iili.io/drd6A91.jpg",
+"https://iili.io/drd65wg.jpg",
+"https://iili.io/drd67ta.jpg",
+"https://iili.io/drd6aoJ.jpg",
+"https://iili.io/drd6cMv.jpg",
+"https://iili.io/drd6EcN.jpg",
+"https://iili.io/drd61Fp.jpg",
+"https://iili.io/drd6GSI.jpg",
+"https://iili.io/drd6V9t.jpg",
+"https://iili.io/drd6WAX.jpg",
+"https://iili.io/drd6XNn.jpg",
+"https://iili.io/drd6NVf.jpg",
+"https://iili.io/drd6OP4.jpg",
+"https://iili.io/drd6kKl.jpg",
+"https://iili.io/drd6vl2.jpg",
+"https://iili.io/drd6Pob.jpg",
+"https://iili.io/drd64Du.jpg",
+"https://iili.io/drd6six.jpg",
+"https://iili.io/drd6tUB.jpg",
+"https://iili.io/drd6pOF.jpg",
+"https://iili.io/drd6yDg.jpg",
+"https://iili.io/drdPHxa.jpg",
+"https://iili.io/drdPJWJ.jpg",
+"https://iili.io/drdPdiv.jpg",
+"https://iili.io/drdPFlp.jpg",
+"https://iili.io/drdP3fR.jpg",
+"https://iili.io/drdPqJI.jpg",
+"https://iili.io/drdPnbn.jpg",
+"https://iili.io/drdPzWG.jpg",
+"https://iili.io/drdPIsf.jpg",
+"https://iili.io/drdPuf4.jpg",
+"https://iili.io/drdP7JS.jpg",
+"https://iili.io/drdPY57.jpg",
+"https://iili.io/drdPae9.jpg",
+"https://iili.io/drdPcbe.jpg",
+"https://iili.io/drdP1Wb.jpg",
+"https://iili.io/drdPMqx.jpg",
+"https://iili.io/drdPV0Q.jpg",
+"https://iili.io/drdPWgV.jpg",
+"https://iili.io/drdPNmF.jpg",
+"https://iili.io/drdPezg.jpg",
+"https://iili.io/drdPvLJ.jpg",
+"https://iili.io/drdPkXa.jpg",
+"https://iili.io/drdP67I.jpg",
+"https://iili.io/drdPZLG.jpg",
+"https://iili.io/drdPPet.jpg",
+"https://iili.io/drdPLIn.jpg",
+"https://iili.io/drdPmrl.jpg",
+"https://iili.io/drdPb14.jpg"
+   
+        ];
+
+        const carouselTrack = document.querySelector('.carousel-track');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        function createSlide(imageUrl) {
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            const img =document.createElement('img');
+            img.src = imageUrl;
+            img.alt = 'Imagen del evento';
+            slide.appendChild(img);
+            return slide;
+        }
+
+        function updateCarousel() {
+            carouselTrack.innerHTML = '';
+            for (let i = currentIndex; i < currentIndex + 3; i++) {
+                const index = i % imageLinks.length;
+                carouselTrack.appendChild(createSlide(imageLinks[index]));
+            }
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % imageLinks.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + imageLinks.length) % imageLinks.length;
+            updateCarousel();
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        updateCarousel();
+
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+            });
+
+        fetch('social_links.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('facebook-link').href = data.facebook;
+                document.getElementById('instagram-link').href = data.instagram;
+                document.getElementById('tiktok-link').href = data.tiktok;
+            })
+            .catch(error => console.error('Error cargando los enlaces:', error));
+    </script>
+</body>
+</html>
+           

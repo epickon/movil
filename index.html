@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EPICKON - Eventos y Experiencias Únicas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Bangers&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #435df5;
+            --secondary-color: rgba(67, 93, 245, 0);
+            --background-color: #f3ddf4;
+            --text-color: #444444;
+            --shadow-color: rgba(35, 20, 204, 0.99);
+            --shadow-colorv1: rgba(22, 37, 237, 0.99);
+        }
+
+                    body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('fondo.jpg'); /* Cambia esto por la ruta de tu imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+        }
+
+        .events-container {
+            padding: 2rem;
+            /* Asegúrate de agregar otros estilos para el contenedor de eventos aquí */
+        }
+
+        .footer {
+            background-color: rgba(243, 221, 244, 0.8);
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        
+        
+        
+        
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .hero {
+
+
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+            padding: 2rem;
+            border-radius: 50px;
+            box-shadow: 0 0 4px var(--shadow-colorv1);
+            max-width: 75%;
+            margin: 0 auto;
+        }
+
+        .hero-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 50%;
+             background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 50px;
+            opacity: -0.8;
+            z-index: -1;
+        }
+
+        .hero-content1 {
+            text-align: center;
+            position: relative;
+            z-index: 0;
+            padding: 1rem;
+            background-color: rgba(0, 27, 244, 0.14);
+            border-radius: 18px;
+            box-shadow: 0 0 29px var(--shadow-colorv1);
+            margin-bottom: 2rem;
+            max-width: 75%;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;1
+        }
+
+        .hero h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .cta-button {
+            background-color: rgb(15, 31, 166);
+            color: rgb(255, 255, 255);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .cta-button:hover {
+            background-color: rgba(47, 68, 194, 0);
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .section {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .mascot-image {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin-top: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .audio-player {
+            margin-top: 2rem;
+            max-width: 100%;
+        }
+
+        .footer1, .footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer1 p, .footer p {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #2f44c2;
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            background-color: var(--background-color);
+            padding: 1rem;
+            box-shadow: 0 0 4px var(--shadow-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            border: none;
+            text-align: center;
+        }
+
+        nav a:hover {
+            color: #2f44c2;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content, .hero-content1 {
+                padding: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .mascot-image {
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 50vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+
+        }
+    </style>
+</head>
+<body>
+   <div id="menu-container"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="logo.png" alt="Logo de EpicKon" style="max-width: 50%; height: auto;" />
+            <p>Sumérgete en el mundo de los eventos</p>
+            <p>Descubre una nueva experiencia de entretenimiento</p>
+            <a href="#about" class="cta-button">Saber más</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="hero-content1">
+            <h2>Sobre EpicKon</h2>
+            <p>
+                EpicKon es tu destino para experiencias únicas en eventos. Somos la evolución de KnarGaming,
+                expandiéndonos hacia el emocionante mundo de las convenciones que combinan lo mejor de los
+                videojuegos, el K-pop y la cultura geek.
+            </p>
+            <p>
+                Celebramos las pasiones compartidas a través de experiencias inmersivas y emocionantes que conectan
+                generaciones. Desde concursos de cosplay familiar hasta mini torneos retro, ofrecemos un espacio
+                inclusivo donde todos pueden disfrutar, crear recuerdos y fortalecer lazos familiares.
+            </p>
+        </div>
+    </section>
+
+    <section class="section" id="mascota">
+        <div class="hero-content1">
+            <h2>Conoce a Rumi</h2>
+            <p>
+                Te presentamos a Rumi, nuestro adorable conejo cibernético. Una mezcla perfecta de tecnología y
+                ternura, Rumi está programado para traer alegría y sonrisas a todos nuestros visitantes.
+            </p>
+            <img src="coneja.png" alt="Rumi, la mascota de EpicKon" style="max-width: 100%; height: auto;" class="mascot-image"  />
+            <div class="audio-player">
+                <script
+                    type="text/javascript"
+                    src="https://files.fm/embed/player?hash=zkk6cmn83r&w=100%&h=auto"
+                    id="filesfm_embed_js__zkk6cmn83r"></script>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer1">
+        <p>
+            ¿Apasionado por los videojuegos, el K-pop y la cultura geek? ¡Descubre más sobre nuestros próximos
+            eventos!
+        </p>
+    </footer>
+
+    <div class="social-links">
+        <a id="facebook-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a id="instagram-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a id="tiktok-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 EpicKon. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        fetch("menu.html")
+            .then((response) => response.text())
+            .then((data) => {
+                document.getElementById("menu-container").innerHTML = data;
+            })
+            .catch((error) => console.error("Error loading menu:", error));
+
+        fetch("social_links.json")
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById("facebook-link").href = data.facebook;
+                document.getElementById("instagram-link").href = data.instagram;
+                document.getElementById("tiktok-link").href = data.tiktok;
+            })
+            .catch((error) => console.error("Error cargando los enlaces:", error));
+    </script>
+</body>
+</html>
+

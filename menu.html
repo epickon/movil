@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary-color: #f7f7f7;
+            --background-color: rgba(255, 255, 255, 0); /* Fondo del menú transparente */
+            --text-color: #ffffff;
+            --bubble-color: rgba(255, 255, 255, 0); /* Color de fondo de las burbujas */
+            --bubble-shadow: 0 4px 8px rgba(0, 0, 0, 0); /* Sombra de las burbujas */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lobster', cursive;
+            background-color: rgba(243, 221, 244, 0); /* Color de fondo de la página */
+        }
+
+        .menu-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 1rem; /* Ajusta el padding según sea necesario */
+            background-color: var(--background-color); /* Fondo del contenedor transparente */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para el contenedor */
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Alinea los elementos verticalmente */
+        }
+
+        nav {
+            display: flex; /* Asegura que los enlaces se mantengan en una fila horizontal */
+            gap: 1rem; /* Espacio entre los enlaces */
+        }
+
+        nav a {
+            position: relative;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 12px 20px; /* Espacio para las burbujas */
+            border-radius: 30px; /* Forma más redondeada para las burbujas */
+            font-size: 1.5rem;
+            text-align: center;
+            line-height: 1.5;
+            display: inline-block;
+            background-color: var(--bubble-color); /* Fondo de las burbujas */
+            box-shadow: var(--bubble-shadow); /* Sombra de las burbujas */
+            transition: all 0.3s ease;
+            width: auto; /* Tamaño automático según el contenido */
+            height: auto; /* Tamaño automático según el contenido */
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px); /* Desplazamiento al pasar el mouse */
+            background-color: rgba(234, 234, 234, 0); /* Color de fondo más suave al pasar el mouse */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0); /* Sombra más pronunciada al pasar el mouse */
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                font-size: 1.2rem;
+                padding: 10px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html">Galería</a>
+            <a href="eventos.html">Eventos</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </div>
+</body>
+</html>
