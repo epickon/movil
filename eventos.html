@@ -85,14 +85,14 @@
         .event-title {
             font-family: 'Bangers', cursive;
             font-size: 2rem;
-            color: var(--primary-color);
+            color: #000000;
             margin-bottom: 0.5rem;
             text-shadow: 1px 1px 0 #000;
         }
 
         .event-date, .event-location {
             font-size: 0.9rem;
-            color: #666;
+            color: #000000;
             margin-bottom: 0.5rem;
         }
 
@@ -104,7 +104,7 @@
         .event-button {
             display: inline-block;
             background-color: var(--primary-color);
-            color: white;
+            color: #000000;
             padding: 0.5rem 1rem;
             text-decoration: none;
             border-radius: 25px;
@@ -208,7 +208,7 @@
     <script>
         const API_KEY = 'AIzaSyC24ezqwMmny3UNBvvd0cQbQ-nWvggqoXw';
         const CALENDAR_ID = '65bac6ad6467485f15f77ff8fccc0f70ed4415e7d83404bf7e7aac3bb64cda91@group.calendar.google.com';
-        const DEFAULT_IMAGE_URL = 'https://iili.io/dr2SiwG.jpg';
+        const DEFAULT_IMAGE_URL = 'evento.jpg';
 
         function initClient() {
             gapi.client.init({
